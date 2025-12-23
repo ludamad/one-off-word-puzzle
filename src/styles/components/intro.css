@@ -1,0 +1,128 @@
+.intro-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+
+.intro-content {
+  text-align: center;
+  max-width: 360px;
+  animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.intro-decoration {
+  font-size: 2.5rem;
+  margin: var(--space-md) 0;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+.intro-title {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-accent), #ff6b9d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.intro-name {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--color-text);
+  margin: var(--space-xs) 0 0 0;
+}
+
+.intro-message {
+  background: var(--color-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin: var(--space-lg) 0;
+}
+
+.intro-message p {
+  margin: 0;
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.intro-message p + p {
+  margin-top: var(--space-sm);
+}
+
+.intro-message strong {
+  color: var(--color-accent);
+}
+
+.intro-challenges {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin: var(--space-lg) 0;
+}
+
+.challenge-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-surface);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+}
+
+.challenge-icon {
+  font-size: 1.25rem;
+}
+
+.intro-hint {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin: var(--space-md) 0;
+  font-style: italic;
+}
+
+.intro-start-btn {
+  width: 100%;
+  padding: var(--space-md) var(--space-xl);
+  font-size: 1.125rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--color-accent), #ff6b9d);
+  color: white;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 4px 20px rgba(255, 107, 157, 0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  margin-top: var(--space-md);
+}
+
+.intro-start-btn:active {
+  transform: scale(0.98);
+}

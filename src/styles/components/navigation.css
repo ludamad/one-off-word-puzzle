@@ -1,0 +1,141 @@
+.game-navigation {
+  padding: var(--space-lg);
+}
+
+.nav-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  color: var(--color-text);
+}
+
+.game-cards {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.game-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--color-border);
+  text-align: left;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--color-accent);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.game-card:nth-child(1)::before { background: var(--color-accent); }
+.game-card:nth-child(2)::before { background: var(--color-secondary); }
+.game-card:nth-child(3)::before { background: var(--color-tertiary); }
+
+.game-card:not(:disabled):active {
+  transform: scale(0.98);
+}
+
+.game-card:not(:disabled):hover {
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-accent);
+}
+
+.game-card:not(:disabled):hover::before {
+  opacity: 1;
+}
+
+.game-card.complete {
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-surface) 100%);
+}
+
+.game-card:disabled {
+  cursor: default;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text);
+}
+
+.card-description {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-sm);
+}
+
+.card-progress {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.rounds-complete {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.complete-badge {
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-success);
+  background: var(--color-accent-light);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+}
+
+.card-dots {
+  display: flex;
+  gap: var(--space-xs);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.dot.filled {
+  background: var(--color-accent);
+  animation: popIn 0.3s ease;
+}
+
+/* Add different colors for different game dots */
+.game-card:nth-child(1) .dot.filled { background: var(--color-accent); }
+.game-card:nth-child(2) .dot.filled { background: var(--color-secondary); }
+.game-card:nth-child(3) .dot.filled { background: var(--color-tertiary); }
+
+@keyframes popIn {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}

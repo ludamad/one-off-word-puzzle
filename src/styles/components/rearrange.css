@@ -1,0 +1,164 @@
+.rearrange-game {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.rearrange-container {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* Word Builder */
+.word-builder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-sm);
+  min-height: 60px;
+  padding: var(--space-md);
+  background: var(--color-surface);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  flex-wrap: wrap;
+}
+
+.word-builder .placeholder {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.word-builder.flash {
+  animation: flash 0.4s ease;
+}
+
+@keyframes flash {
+  0%, 100% { background: var(--color-surface); }
+  50% { background: var(--color-accent-light); }
+}
+
+/* Letter Rack */
+.letter-rack {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.letter-rack.shake {
+  animation: shake 0.4s ease;
+}
+
+/* Letter Tiles */
+.letter-tile {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: var(--color-surface);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-text);
+  transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.letter-tile:active {
+  transform: scale(0.95);
+}
+
+.letter-tile.wildcard {
+  background: var(--color-accent-light);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.letter-tile.in-builder {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+.letter-tile.in-builder.wildcard {
+  background: var(--color-accent);
+}
+
+/* Action Buttons */
+.rearrange-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.action-btn {
+  padding: var(--space-sm) var(--space-xl);
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  transition: background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.action-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.clear-btn {
+  background: var(--color-bg-alt);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+}
+
+.clear-btn:not(:disabled):active {
+  background: var(--color-border);
+}
+
+.submit-btn {
+  background: var(--color-accent);
+  color: white;
+}
+
+.submit-btn:not(:disabled):active {
+  background: var(--color-accent-dark);
+}
+
+/* Reuse word list styles from findwords */
+.rearrange-game .word-list {
+  padding: var(--space-lg);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+}
+
+/* Loading screen */
+.loading-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+/* Word length indicators */
+.found-word.six-letter {
+  background: linear-gradient(135deg, var(--color-accent-light), rgba(255, 255, 255, 0.3));
+  border: 1px solid var(--color-accent);
+}
+
+/* Rearrange word list header with two counters */
+.rearrange-game .word-list-header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-md);
+}

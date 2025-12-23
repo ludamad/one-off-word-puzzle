@@ -1,0 +1,6 @@
+I have the following task:
+
+Technologies: vanilla JS, typescript, static HTML served (embedded secret into the HTML), mobile optimized
+
+I have a box with a lock on it. the lock combo is 23, 7, 28. 
+My Sister Martyna is big into word games. I want her to need to solve word puzzles until she gets to the final puzzle and gets the lock combo. This will be revealed by a server. There are 3 categories of word game: Find Words (boggle-like), Crosswords (camera trivia, photography, board games, Polish culture), Rearrange (scrabble-like). Find Words requires you to find all the 4 letter words and above in 5x5 arrangement. There are 3 rounds. Crosswords is a small crossword  with lots of interlocking and creative crossword design. There are 2 rounds. Rearrange has 5 rounds and requires finding every 4 letter word and above in a rack. There is one wildcard. I want to also visually design the site. Give a visual prompt for an AI image model as a secondary artifact.
