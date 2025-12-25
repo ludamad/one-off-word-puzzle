@@ -32,14 +32,11 @@ export class LetterRack {
         <div class="word-builder no-select">
           ${this.currentWord.length === 0
             ? '<span class="placeholder">Tap letters to build a word</span>'
-            : this.currentWord.map((tile) => this.renderTile(tile, true)).join('')
+            : `<span class="current-word">${this.currentWord.map(t => t.letter).join('')}</span>`
           }
         </div>
         <div class="letter-rack no-select">
-          ${this.tiles
-            .filter((t) => !t.inWord)
-            .map((tile) => this.renderTile(tile, false))
-            .join('')}
+          ${this.tiles.map((tile) => this.renderTile(tile)).join('')}
         </div>
         <div class="rearrange-actions">
           <button class="action-btn clear-btn" ${this.currentWord.length === 0 ? 'disabled' : ''}>
@@ -55,12 +52,11 @@ export class LetterRack {
     this.attachListeners()
   }
 
-  private renderTile(tile: LetterTile, inBuilder: boolean): string {
+  private renderTile(tile: LetterTile): string {
     return `
       <button
-        class="letter-tile ${tile.isWildcard ? 'wildcard' : ''} ${inBuilder ? 'in-builder' : ''}"
+        class="letter-tile ${tile.inWord ? 'used' : ''}"
         data-id="${tile.id}"
-        data-in-builder="${inBuilder}"
       >
         ${tile.letter}
       </button>
@@ -68,18 +64,22 @@ export class LetterRack {
   }
 
   private attachListeners(): void {
-    // Letter tiles in rack
+    // Letter tiles in rack - toggle on tap
     this.container.querySelectorAll('.letter-tile').forEach((el) => {
-      el.addEventListener('click', () => {
+      const handler = (e: Event) => {
+        e.preventDefault()
         const id = parseInt((el as HTMLElement).dataset.id!, 10)
-        const inBuilder = (el as HTMLElement).dataset.inBuilder === 'true'
-
-        if (inBuilder) {
-          this.removeFromWord(id)
-        } else {
-          this.addToWord(id)
+        const tile = this.tiles.find(t => t.id === id)
+        if (tile) {
+          if (tile.inWord) {
+            this.removeFromWord(id)
+          } else {
+            this.addToWord(id)
+          }
         }
-      })
+      }
+      el.addEventListener('click', handler)
+      el.addEventListener('touchend', handler)
     })
 
     // Clear button
