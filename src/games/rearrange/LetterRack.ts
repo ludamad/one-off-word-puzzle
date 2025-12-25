@@ -66,8 +66,7 @@ export class LetterRack {
   private attachListeners(): void {
     // Letter tiles in rack - toggle on tap
     this.container.querySelectorAll('.letter-tile').forEach((el) => {
-      el.addEventListener('pointerup', (e) => {
-        e.preventDefault()
+      el.addEventListener('click', () => {
         const id = parseInt((el as HTMLElement).dataset.id!, 10)
         const tile = this.tiles.find(t => t.id === id)
         if (tile) {
@@ -81,16 +80,12 @@ export class LetterRack {
     })
 
     // Clear button
-    const clearBtn = this.container.querySelector('.clear-btn')
-    clearBtn?.addEventListener('pointerup', (e) => {
-      e.preventDefault()
+    this.container.querySelector('.clear-btn')?.addEventListener('click', () => {
       this.clearWord()
     })
 
     // Submit button
-    const submitBtn = this.container.querySelector('.submit-btn')
-    submitBtn?.addEventListener('pointerup', (e) => {
-      e.preventDefault()
+    this.container.querySelector('.submit-btn')?.addEventListener('click', () => {
       this.submitWord()
     })
   }
