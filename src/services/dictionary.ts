@@ -14,7 +14,7 @@ class Dictionary {
   async load(): Promise<void> {
     if (this.loaded) return
 
-    const response = await fetch('/dictionary.txt')
+    const response = await fetch(import.meta.env.BASE_URL + 'dictionary.txt')
     const text = await response.text()
     const words = text
       .split('\n')
